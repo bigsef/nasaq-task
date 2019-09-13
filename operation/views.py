@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.generics import CreateAPIView
 
-# Create your views here.
+from .models import Task
+from .serializers import TaskSerializer
+
+
+class CreateTaskView(CreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer

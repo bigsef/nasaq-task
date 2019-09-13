@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "a17ceec7-46f8-4a1a-a2b8-64e06d9bff84",
+		"name": "Nasaq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "desc",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server_name}}/add/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						"add",
+						""
+					]
+				},
+				"description": "API to create new task"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8300cb80-1e95-4f55-b500-7056b8b4fc23",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b77a21cf-5024-4137-876f-1ffd80e43ea8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c2025254-595d-4bec-82a7-d99ac7d95e90",
+			"key": "server_name",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

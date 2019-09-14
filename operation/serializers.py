@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from .models import Task
 
@@ -13,3 +14,6 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = '__all__'
+
+    def update(self, instance, validated_data):
+        raise ValidationError(f'Not allowed to edit {instance.title} after creation')

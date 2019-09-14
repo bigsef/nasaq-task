@@ -6,6 +6,24 @@
 	},
 	"item": [
 		{
+			"name": "List Tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_name}}/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "API to list all tasks"
+			},
+			"response": []
+		},
+		{
 			"name": "Add Task",
 			"request": {
 				"method": "POST",
@@ -26,16 +44,172 @@
 					]
 				},
 				"url": {
-					"raw": "{{server_name}}/add/",
+					"raw": "{{server_name}}/",
 					"host": [
 						"{{server_name}}"
 					],
 					"path": [
-						"add",
 						""
 					]
 				},
 				"description": "API to create new task"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrive Task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_name}}/:pk/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": ""
+						}
+					]
+				},
+				"description": "get all details for an Task instance"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "desc",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server_name}}/:pk/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": "4"
+						}
+					]
+				},
+				"description": "API to edit task"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit partial Task",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "desc",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server_name}}/:pk/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": "4"
+						}
+					]
+				},
+				"description": "API to edit task partial"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{server_name}}/:pk/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": ""
+						}
+					]
+				},
+				"description": "Delete an Task"
+			},
+			"response": []
+		},
+		{
+			"name": "Change State",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{server_name}}/:pk/change-state/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						"change-state",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": ""
+						}
+					]
+				},
+				"description": "let user change Task State"
 			},
 			"response": []
 		}
@@ -64,7 +238,7 @@
 	],
 	"variable": [
 		{
-			"id": "c2025254-595d-4bec-82a7-d99ac7d95e90",
+			"id": "7d039f9d-5f8d-4b7e-ab46-a1f63ae7c2a1",
 			"key": "server_name",
 			"value": "http://127.0.0.1:8000",
 			"type": "string"

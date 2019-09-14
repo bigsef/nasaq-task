@@ -7,5 +7,3 @@ app_name = 'operation'
 route = DefaultRouter()
 route.register('', TaskViewSet)
 urlpatterns = route.urls
-
-print(urlpatterns)

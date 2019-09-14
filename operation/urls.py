@@ -1,10 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from .views import CreateTaskView
+from .views import TaskViewSet
 
 app_name = 'operation'
 
+route = DefaultRouter()
+route.register('', TaskViewSet)
+urlpatterns = route.urls
 
-urlpatterns = [
-    path('add/', CreateTaskView.as_view(), name='create'),
-]
+print(urlpatterns)

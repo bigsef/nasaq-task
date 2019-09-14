@@ -22,6 +22,10 @@ class NewState(Status):
         self._context.save()
         return InProgressState(self._context)
 
+    def update(self, field: str, value: str) -> None:
+        setattr(self._context, field, value)
+        self._context.save()
+
 
 class InProgressState(Status):
     def transmit(self) -> Status:
@@ -32,7 +36,7 @@ class InProgressState(Status):
 
 class DoneState(Status):
     def transmit(self) -> None:
-        raise ValidationError('Task is in Done State. No change avalible')
+        raise ValidationError(f'Task {self._context} is in Done State. No change avalible')
 
 
 class Task(models.Model):

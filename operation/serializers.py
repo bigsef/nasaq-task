@@ -13,7 +13,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = '__all__'
+        exclude = 'hook',
 
     def update(self, instance, validated_data):
         raise ValidationError(f'Not allowed to edit {instance.title} after creation')

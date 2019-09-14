@@ -33,6 +33,17 @@ class InProgressState(Status):
         self._context.save()
         return DoneState(self._context)
 
+    def link(self, tasks: list) -> None:
+        self._context.hook.add(*tasks)
+
+    def get_link(self):
+        hook = self._context.hook.all()
+        hook = hook.union(
+            self._context.hook_with.all(),
+            Task.objects.filter(pk=self._context.pk)
+        )
+        return hook
+
 
 class DoneState(Status):
     def transmit(self) -> None:
@@ -53,6 +64,7 @@ class Task(models.Model):
     title = models.CharField(_('Title'), max_length=50)
     desc = models.TextField(_('Description'))
     state = models.IntegerField(_('State'), choices=STATE_CHOICE, default=new)
+    hook = models.ManyToManyField('self', related_name='hook_with', symmetrical=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -72,8 +84,8 @@ class Task(models.Model):
     def update(self, field: str, value: str) -> Task:
         return self.__status.update(field, value)
 
-    def link(self, task: Task) -> None:
-        self.__status.link(task)
+    def link(self, tasks: list) -> None:
+        self.__status.link(tasks)
 
-    def get_linked_tasks(self, task_id: int):
-        return self.__status.get_link(task_id)
+    def get_linked_tasks(self):
+        return self.__status.get_link()

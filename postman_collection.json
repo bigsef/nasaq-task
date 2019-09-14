@@ -284,6 +284,76 @@
 				"description": "API to allow update description only if instance object is in new state"
 			},
 			"response": []
+		},
+		{
+			"name": "Add Task Link",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"hook\": [4, 5, 8]\n}"
+				},
+				"url": {
+					"raw": "{{server_name}}/:pk/add-hook/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						"add-hook",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": "9"
+						}
+					]
+				},
+				"description": "API to link one task with another task instance or more"
+			},
+			"response": []
+		},
+		{
+			"name": "List Tasks linked",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{server_name}}/:pk/get-hook/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						"get-hook",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": "9"
+						}
+					]
+				},
+				"description": "API to list all tasks linked with etch other"
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -310,7 +380,7 @@
 	],
 	"variable": [
 		{
-			"id": "ad37dfcb-de47-446d-8c7c-f9e4d1b5738b",
+			"id": "7cd954e3-f9d4-4dd5-ae1c-7b0d37719858",
 			"key": "server_name",
 			"value": "http://127.0.0.1:8000",
 			"type": "string"

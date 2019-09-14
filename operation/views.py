@@ -37,3 +37,24 @@ class TaskViewSet(ModelViewSet):
             return super().retrieve(request, *args, **kwargs)
         except AttributeError:
             raise ParseError(f"Task {instance} isn't in New state. You can't change Attribute")
+
+    @action(detail=True, methods=['post'], url_path='add-hook')
+    def add_hook(self, request, pk=None, *args, **kwargs):
+        instance = self.get_object()
+        try:
+            instance.link(
+                [i for i in self.get_queryset() if i.pk in self.request.data.get('hook')]
+            )
+            self.queryset = instance.get_linked_tasks()
+            return super().list(request, *args, **kwargs)
+        except AttributeError:
+            raise ParseError(f"Task {instance} isn't in In Progress. You can't add linked tasks")
+
+    @action(detail=True, methods=['get'], url_path='get-hook')
+    def get_hook(self, request, pk=None, *args, **kwargs):
+        instance = self.get_object()
+        try:
+            self.queryset = instance.get_linked_tasks()
+            return super().list(request, *args, **kwargs)
+        except AttributeError:
+            raise ParseError(f"Task {instance} isn't in In Progress. You can't get linked tasks")

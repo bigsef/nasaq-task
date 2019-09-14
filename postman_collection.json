@@ -212,6 +212,78 @@
 				"description": "let user change Task State"
 			},
 			"response": []
+		},
+		{
+			"name": "Update Title",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server_name}}/:pk/update-title/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						"update-title",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": ""
+						}
+					]
+				},
+				"description": "API to allow update title only if instance object is in new state"
+			},
+			"response": []
+		},
+		{
+			"name": "Update description",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "desc",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server_name}}/:pk/update-description/",
+					"host": [
+						"{{server_name}}"
+					],
+					"path": [
+						":pk",
+						"update-description",
+						""
+					],
+					"variable": [
+						{
+							"key": "pk",
+							"value": ""
+						}
+					]
+				},
+				"description": "API to allow update description only if instance object is in new state"
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -238,7 +310,7 @@
 	],
 	"variable": [
 		{
-			"id": "7d039f9d-5f8d-4b7e-ab46-a1f63ae7c2a1",
+			"id": "ad37dfcb-de47-446d-8c7c-f9e4d1b5738b",
 			"key": "server_name",
 			"value": "http://127.0.0.1:8000",
 			"type": "string"

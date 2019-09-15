@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 
+# main entry point for project URL
 urlpatterns = [
     path('', include('operation.urls'))
 ]
